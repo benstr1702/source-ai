@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { ArticleProvider } from "@/context/ArticleContext";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
 	title: "source.ai",
 	description: "For educational purpose",
 	icons: {
-		icon: "/favicon.ico", // this will be your main favicon
+		icon: "/favicon.ico",
 	},
 };
 
@@ -32,7 +33,7 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				{children}
+				<ArticleProvider>{children}</ArticleProvider>
 			</body>
 		</html>
 	);

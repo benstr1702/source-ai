@@ -13,7 +13,7 @@ export const PUBLICATION_PROMPTS = {
 				rules: "Clear, factual, no clickbait, typically 5-10 words",
 			},
 			dateline: {
-				format: "NEW YORK, Nov. 22 —",
+				format: "Nov. 22",
 			},
 			paragraphs: {
 				style: "Topic sentence followed by supporting details, quotes, context",

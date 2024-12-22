@@ -1,6 +1,10 @@
 // types/article.ts
 import { z } from "zod";
-
+export type ServerFile = {
+	name: string;
+	size: number;
+	type: string;
+};
 // types/article.ts
 export const ArticleSchema = z.object({
 	headline: z.string(),
@@ -9,15 +13,10 @@ export const ArticleSchema = z.object({
 		name: z.string(),
 		title: z.string(),
 	}),
-	featuredImage: z
-		.object({
-			url: z.string(),
-			caption: z.string(),
-		})
-		.default(() => ({
-			url: "public/breaking.png",
-			caption: "Breaking News",
-		})),
+	featuredImage: z.object({
+		url: z.string(),
+		caption: z.string(),
+	}),
 	article_body: z.array(
 		z.object({
 			topic_sentence: z.string(),
@@ -34,6 +33,7 @@ export type ArticleParagraph = {
 };
 
 export type GenerateArticleResponse = {
-	article: string;
+	success: boolean;
+	article?: z.infer<typeof ArticleSchema>; // Use the Zod inference here too
 	error?: string;
 };

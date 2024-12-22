@@ -63,6 +63,7 @@ export const POST = async (req: Request) => {
 		}
 
 		const formData: FormData = await req.json();
+		console.log("Form data received:", formData); // Log incoming data
 
 		// Validate form data
 		if (!formData.prompt?.trim()) {
@@ -87,11 +88,12 @@ export const POST = async (req: Request) => {
 				max_tokens: 2000, // Limit response length
 			})
 			.catch((error) => {
-				console.log("OpenAI Error:", error); // Add this
-
-				if (error.code === "insufficient_quota") {
-					throw new Error("OpenAI API quota exceeded");
-				}
+				console.log("OpenAI Error Details:", {
+					message: error.message,
+					type: error.type,
+					code: error.code,
+					stack: error.stack,
+				});
 				throw error;
 			});
 

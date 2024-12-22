@@ -62,7 +62,7 @@ export const PUBLICATIONS: Record<
 	WSJ: {
 		value: "wsj",
 		label: "Wall Street Journal",
-		description: "Business-focused, conservative-leaning newspaper",
+		description: "Conservative-leaning newspaper",
 	},
 	NYT: {
 		value: "nyt",
